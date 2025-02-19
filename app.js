@@ -27,4 +27,44 @@ const players = [
 
 ]
 
+function drawTeamOne() {
+  let emoji = ''
 
+  for (let i = 0; i < players.length; i++) {
+    const athletes = players[i];
+    if (athletes.teamNumber == '1') {
+      emoji += athletes.emoji
+    }
+
+  }
+  console.log('Team One Emojis', emoji);
+
+  const teamOneElem = document.getElementById('team-one')
+
+  teamOneElem.innerText = emoji
+}
+
+function drawTeamTwo() {
+  let emoji = ''
+
+  for (let i = 0; i < players.length; i++) {
+    const athletes = players[i];
+    console.log('athletes', athletes)
+    if (athletes.teamNumber == '2') {
+      emoji += athletes.emoji
+      console.log('emoji', emoji)
+
+    }
+
+  }
+  console.log('Team Two Emojis', emoji);
+
+  const teamTwoElem = document.getElementById('team-two')
+  console.log('teamTwoElem', teamTwoElem)
+  teamTwoElem.innerText = emoji
+}
+
+
+
+drawTeamOne()
+drawTeamTwo()
