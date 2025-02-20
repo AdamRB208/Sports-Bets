@@ -26,6 +26,15 @@ const players = [
 
 ]
 
+function draftPlayers() {
+  players.forEach(player => {
+    const randomTeamNumber = Math.ceil(Math.random() * 2)
+    player.teamNumber = randomTeamNumber
+  })
+  drawTeamOne()
+  drawTeamTwo()
+}
+
 function drawTeamOne() {
   let emoji = ''
 
@@ -69,15 +78,6 @@ function drawBank() {
     bankElem.innerText = `$${bank}`;
   }
 
-}
-
-function draftPlayers() {
-  players.forEach(player => {
-    const randomTeamNumber = Math.ceil(Math.random() * 2)
-    player.teamNumber = randomTeamNumber
-  })
-  drawTeamOne()
-  drawTeamTwo()
 }
 
 function betTeamOne(betAmount) {
@@ -127,9 +127,53 @@ function betTeamTwo(betAmount) {
   drawBank()
 }
 
+function betTeam(teamNumber, betAmount) {
+  if (betAmount > bank) {
+    window.alert(`You do not have enough $funds$ to bet $${betAmount}`)
+    return
+  }
+
+  let yourTeamScore = 0
+  let opposingTeamScore = 0
+
+  players.forEach(player => {
+    if (player.teamNumber == teamNumber) {
+      yourTeamScore += player.skill
+    }
+    else {
+      opposingTeamScore += player.skill
+    }
+  })
+
+  if (yourTeamScore > opposingTeamScore) {
+    bank = + betAmount
+  }
+  else if (opposingTeamScore > yourTeamScore) {
+    bank -= betAmount
+  }
+
+  checkIfBroke()
+  draftPlayers()
+  drawBank()
+}
+
+function checkIfBroke() {
+  if (bank > 0) {
+    return
+  }
+
+  const wantsToPlayAgain = window.confirm("Game Over! You have no more $funds%! Would you like to play again?")
+
+  if (wantsToPlayAgain == true) {
+    bank = 100
+  }
+  else {
+    window.close()
+  }
+}
 
 
-//draftPlayers()
+draftPlayers()
 drawBank()
 //drawTeamOne()
 //drawTeamTwo()
