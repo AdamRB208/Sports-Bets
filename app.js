@@ -96,8 +96,31 @@ function betTeamOne(betAmount) {
     bank += betAmount
   }
 
-  else if (teamTwoTotalskill.teamOneTotalSkill) {
+  else if (teamTwoTotalskill > teamOneTotalSkill) {
     bank -= betAmount
+  }
+
+  draftPlayers()
+  drawBank()
+}
+
+function betTeamTwo(betAmount) {
+
+  const teamOnePlayers = players.filter(player => player.teamNumber == 1)
+  const teamTwoPlayers = players.filter(player => player.teamNumber == 2)
+
+  let teamOneTotalSkill = 0
+  let teamTwoTotalSkill = 0
+
+  teamOnePlayers.forEach(player => teamOneTotalSkill += player.skill)
+  teamTwoPlayers.forEach(player => teamTwoTotalSkill += player.skill)
+
+  if (teamOneTotalSkill > teamTwoTotalSkill) {
+    bank -= betAmount
+  }
+
+  else if (teamTwoTotalSkill > teamOneTotalSkill) {
+    bank += betAmount
   }
 
   draftPlayers()
