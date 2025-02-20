@@ -1,3 +1,13 @@
 body {
   background-color: gray;
 }
+
+.team-one-button {
+  background-color: rgb(108 117 125);
+  border-radius: 15px;
+}
+
+.team-two-button {
+  background-color: rgb(108 117 125);
+  border-radius: 15px;
+}
