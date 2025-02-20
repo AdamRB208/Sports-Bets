@@ -23,7 +23,6 @@ const players = [
   { teamNumber: 2, emoji: '🧍‍♂️', skill: 3, name: "Dan Smith" },
   { teamNumber: 2, emoji: '🐅', skill: 100, name: "Tiger" },
 
-
 ]
 
 function draftPlayers() {
@@ -171,7 +170,6 @@ function checkIfBroke() {
     window.close()
   }
 }
-
 
 draftPlayers()
 drawBank()
